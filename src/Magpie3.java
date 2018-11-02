@@ -45,6 +45,12 @@ public class Magpie3
 		{
 			response = "Tell me more about your family.";
 		}
+		else if (findKeyword(statement, "Bennett") >= 0){
+			response = "He's a cool guy";
+		}
+		else if (findKeyword(statement, "Vectors") >= 0){
+			response = "Ha! Vectors!";
+		}
 		else
 		{
 			response = getRandomResponse();
@@ -68,7 +74,7 @@ public class Magpie3
 	 * @return the index of the first occurrence of goal in
 	 *         statement or -1 if it's not found
 	 */
-	private int findKeyword(String statement, String goal,
+	public int findKeyword(String statement, String goal,
 			int startPos)
 	{
 		String phrase = statement.trim().toLowerCase();
@@ -85,6 +91,7 @@ public class Magpie3
 			// Find the string of length 1 before and after
 			// the word
 			String before = " ", after = " ";
+
 			if (psn > 0)
 			{
 				before = phrase.substring(psn - 1, psn);
@@ -109,6 +116,10 @@ public class Magpie3
 
 			// The last position didn't work, so let's find
 			// the next, if there is one.
+
+			System.out.println("before: " + before + "\" | ");
+			System.out.println("after: " + after + "\" | ");
+
 			psn = phrase.indexOf(goal, psn + 1);
 
 		}
